@@ -25,6 +25,10 @@ describe('Transaction', ()=>{
     test('initializer', ()=>{
         expect(transaction.data.length).toBe(2)
     })
+    test('categorize', ()=>{
+        transaction.categorized()
+        expect(transaction.categoryType[0]).toBe('food')
+    })
     test('category', ()=>{
         expect(transaction.category().food.totalNumber).toBe(2)
     })
