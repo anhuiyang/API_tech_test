@@ -26,7 +26,7 @@ describe('Transaction', ()=>{
         expect(transaction.data.length).toBe(2)
     })
     test('category', ()=>{
-        expect(transaction.category()).toBe(categoryData)
+        expect(transaction.category().food.totalNumber).toBe(2)
     })
 })
 
