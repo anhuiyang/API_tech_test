@@ -18,7 +18,7 @@ app.get('/insights/categories', (req, res)=>{
     apiHelpler.makeAPICall('https://transactions.spokedev.xyz/transactions')
     .then(response=>{
         let transaction = new transaction(response)
-        category.
+        res.json(transaction.category())
     })
     .catch(error=>{res.send(error)})
 })
