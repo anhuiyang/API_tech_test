@@ -3,23 +3,43 @@ class Transaction{
         this.data = data
         this.categoryType = []
     }
-    category(){
-
-        this.data.forEach((transaction)=>{
-            transaction.category
-        })
-
-        return {"food": {
-            "totalNumber": 2,
-            "totalValue": 120,
-            "averageValue": 60
-          }}
+    cashflow(){
+        return this.groupByT(this.data, 'paymentDate')
     }
-
-    categorized(){
-        this.data.forEach((each)=>{
-            this.categoryType.includes(each.category) ? '' : this.categoryType.push(each.category)
-        })
+    category(){
+        return this.groupByC(this.data, 'category')
+    }
+    groupByC(array, property){
+        return array.reduce((acc, obj)=>{
+            let key = obj[property]
+            if(!acc[key]){
+                acc[key] ={
+                    "totalNumber": 0,
+                    "totalValue": 0,
+                    "averageValue": 0
+                }
+            }
+            acc[key].totalNumber+=1
+            acc[key].totalValue+=obj.amount
+            acc[key].averageValue=acc[key].totalValue/acc[key].totalNumber
+            return acc
+        }, {})
+    }
+    groupByT(array, property){
+        return array.reduce((acc, obj)=>{
+            let key = +obj[property].slice(8,10)+'/'+obj[property].slice(5,7)+'/'+obj[property].slice(0,4)
+            if(!acc[key]){
+                acc[key] ={
+                    "totalNumber": 0,
+                    "totalValue": 0,
+                    "averageValue": 0
+                }
+            }
+            acc[key].totalNumber+=1
+            acc[key].totalValue+=obj.amount
+            acc[key].averageValue=acc[key].totalValue/acc[key].totalNumber
+            return acc
+        }, {})
     }
 }
 module.exports = Transaction
