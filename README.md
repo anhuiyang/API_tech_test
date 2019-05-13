@@ -2,7 +2,7 @@
 
 An API fetch data from another API and showcase data as requirement 
 
-A separate frontend app that connects to the backend of this Express API can be found [here](https://github.com/anhuiyang/todolist_app)
+origianl tech test repo can be found [here](https://github.com/jigsawxyz/recruitment-uk)
 
 ## Getting started
 
